@@ -14,6 +14,7 @@ export class SessionService {
     return sessionId;
   }
 
+  async getSession<SessionType extends Record<string, string>>(sessionId: string): Promise<SessionType>;
   async getSession(sessionId: string): Promise<Record<string, string>> {
     return this.redisService.hashGet(`sid_${sessionId}`);
   }
