@@ -10,7 +10,10 @@ async function bootstrap() {
 
   app.use(
     session({
-      store: new RedisStore({ client: redisClient }),
+      store: new RedisStore({
+        client: redisClient,
+        prefix: 'sid_',
+      }),
       secret: 'your-secret-key',
       resave: false,
       saveUninitialized: false,
